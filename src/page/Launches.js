@@ -1,12 +1,12 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 
-export default function Currency() {
+export default function Launches() {
   const GET_ROCKETS = gql`
-    query GetExchangeRate {
-      rates(currency: "EUR") {
-        currency
-        name
+    {
+      launchesPast(limit: 10) {
+        mission_name
+        launch_date_local
       }
     }
   `;
@@ -18,8 +18,8 @@ export default function Currency() {
 
   return (
     <ul>
-      {data.rates.map(({ currency }) => (
-        <li key={currency}>Currency: {currency}</li>
+      {data.launchesPast.map(({ mission_name }) => (
+        <li key={mission_name}>Mission Name: {mission_name}</li>
       ))}
     </ul>
   );

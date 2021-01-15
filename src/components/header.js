@@ -1,33 +1,26 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export default function header() {
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <NavLink activeStyle={{ backgroundColor: "red" }} exact to="/">
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/page">
-              Pagina
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/lists">
-              Lists
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/APOLLO">
-              Apollo Query
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+          <Link className="nav-link" to="/launches">
+            Launches
+          </Link>
+        </Nav>
+        <Form inline>
+          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+          <Button variant="outline-success">Search</Button>
+        </Form>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
