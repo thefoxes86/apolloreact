@@ -5,7 +5,7 @@ import DrawerHeader from "../components/DrawerHeader";
 export default function Launches() {
   const GET_ROCKETS = gql`
     {
-      launchesPast(limit: 10) {
+      launchesPast(limit: 5) {
         mission_name
         launch_date_local
       }
@@ -23,7 +23,7 @@ export default function Launches() {
     <ul>
       {data.launchesPast.map(({ mission_name }) => (
         <li key={mission_name}>Mission Name: {mission_name}</li>
-        ))}
+      ))}
     </ul>
     </React.Fragment>
   );

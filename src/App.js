@@ -1,6 +1,6 @@
 import { Route, BrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
 import Launches from "./page/Launches";
+import Rockets from "./page/Rockets";
 import { ApolloProvider } from "@apollo/client";
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import Home from "./page/Home";
@@ -24,10 +24,10 @@ function App(props) {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
         <ApolloProvider client={client}>
           <Route path="/" exact component={Home} />
           <Route path="/launches" component={Launches} />
+          <Route path="/rockets" component={Rockets} />
         </ApolloProvider>
       </BrowserRouter>
     </div>
