@@ -1,6 +1,5 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import DrawerHeader from "../components/DrawerHeader";
 
 export default function Launches() {
   const GET_ROCKETS = gql`
@@ -19,12 +18,11 @@ export default function Launches() {
 
   return (
     <React.Fragment>
-      <DrawerHeader/>
-    <ul>
-      {data.launchesPast.map(({ mission_name }) => (
-        <li key={mission_name}>Mission Name: {mission_name}</li>
+      <ul>
+        {data.launchesPast.map(({ mission_name }) => (
+          <li key={mission_name}>Mission Name: {mission_name}</li>
         ))}
-    </ul>
+      </ul>
     </React.Fragment>
   );
 }

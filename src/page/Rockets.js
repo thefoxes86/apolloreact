@@ -1,13 +1,22 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import DrawerHeader from "../components/DrawerHeader";
 
 export default function Launches() {
   const GET_ROCKETS = gql`
     {
-      launchesPast(limit: 5) {
-        mission_name
-        launch_date_local
+      rockets {
+        active
+        boosters
+        company
+        cost_per_launch
+        country
+        description
+        landing_legs {
+          material
+          number
+        }
+        stages
+        name
       }
     }
   `;
@@ -19,12 +28,11 @@ export default function Launches() {
 
   return (
     <React.Fragment>
-      <DrawerHeader/>
-    <ul>
-      {data.launchesPast.map(({ mission_name }) => (
-        <li key={mission_name}>Mission Name: {mission_name}</li>
-      ))}
-    </ul>
+      <ul>
+        {data.rockets.map(({ name }) => (
+          <li key={name}>Mission Name: {name}</li>
+        ))}
+      </ul>
     </React.Fragment>
   );
 }
